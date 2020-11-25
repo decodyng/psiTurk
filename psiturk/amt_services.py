@@ -280,8 +280,8 @@ class MTurkServices(object):
         if hit_config['manual_qualification_id'] != 'none':
             quals.append((dict(
                 QualificationTypeId=hit_config['manual_qualification_id'],
-                Comparator='EqualTo',
-                IntegerValues=[int(hit_config['manual_qualification_min_percent'])]
+                Comparator=hit_config['manual_qualification_comparator'],
+                IntegerValues=[int(hit_config['manual_qualification_value'])]
             )))
 
         # Create a HIT type for this HIT.
