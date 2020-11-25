@@ -277,6 +277,13 @@ class MTurkServices(object):
                 LocaleValues=[{'Country': 'US'}]
             ))
 
+        if hit_config['manual_qualification_id'] != 'none':
+            quals.append((dict(
+                QualificationTypeId=hit_config['manual_qualification_id'],
+                Comparator='EqualTo',
+                IntegerValues=[int(hit_config['manual_qualification_min_percent'])]
+            )))
+
         # Create a HIT type for this HIT.
         hit_type = self.mtc.create_hit_type(
             Title=hit_config['title'],
